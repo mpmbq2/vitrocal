@@ -1,0 +1,6 @@
+figi_output:
+  type: datasets.ExcelDataset
+  filepath: ../../data/01_raw/Fiji Neuron Output.xlsx
+  load_args:
+    header:
+    index_col: 0
