@@ -4,27 +4,32 @@ import numpy as np
 from .base import BaseAnalyzer
 
 class StandardAnalyzer(BaseAnalyzer):
+    """Initialize analyzer object.
+
+    Attributes:
+        upper_decay_bound (float, optional): Proportion of data to denote
+            upper bound. Defaults to 0.8.
+        lower_decay_bound (float, optional): Proprtion of data to denote
+            lower bound. Defaults to 0.2.
+    """
     def __init__(self,
                  upper_decay_bound: float=0.8,
-                 lower_decay_bound: float=0.2):
+                 lower_decay_bound: float=0.2
+    ):
         
         self.upper_decay_bound = upper_decay_bound
         self.lower_decay_bound = lower_decay_bound
-        
+
+
+    def analyze(self, events: dict) -> pd.DataFrame:
+        """Return dataframe with event counts, peaks, and decay.
+
+        Args:
+            events (dict): Detected events from `StandardExtractor.detect_and_extract()`
+
+        Returns:
+            pd.DataFrame: Summary dataframe.
         """
-        Initialize analyzer object.
-
-        Parameters
-        ----------
-        upper_decay_bound, lower_decay_bound : float
-            Proprtion of peak fluoresence from which to calculate decay.
-
-        Returns
-        -------
-        DataFrame with values for each ROI-event combination.
-        """
-
-    def analyze(self, events) -> pd.DataFrame:
 
         decay = self.find_event_decay(events)
         results = pd.DataFrame()
@@ -36,16 +41,40 @@ class StandardAnalyzer(BaseAnalyzer):
 
         return results
 
-    def count_events(self, events) -> dict:
-         return {k: len(v) for k, v in events.items()}
+    def count_events(self, events: dict) -> dict:
+        """Count number of events for each trace.
+
+        Args:
+            events (dict): Detected events from `StandardExtractor.detect_and_extract()`
+
+        Returns:
+            dict: Counts.
+        """
+
+        return {k: len(v) for k, v in events.items()}
     
-    def find_event_peaks(self, events) -> dict:
+    def find_event_peaks(self, events: dict) -> dict:
+        """Find peak for each event.
+
+        Args:
+            events (dict): Detected events from `StandardExtractor.detect_and_extract()`
+
+        Returns:
+            dict: Event peaks.
+        """
+
         return {k: [np.max(ev) for ev in v] for k, v in events.items()}
     
-    def find_event_decay(self, events) -> dict:
+    def find_event_decay(self, events: dict) -> dict:
+        """Find event peaks and decay.
+
+        Args:
+            events (dict): Detected events from `StandardExtractor.detect_and_extract()`
+
+        Returns:
+            dict: Summary dictionary.
         """
-        Determine event peak and decay using thresholds.
-        """
+        
         def _handle_decay_values(x):
             if len(x) >= 1:
                 bound = x[0]

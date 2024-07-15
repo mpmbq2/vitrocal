@@ -7,102 +7,164 @@ from typing import Tuple
 
 
 class DerivativeDetector(BaseDetector):
+    """Initialize derivative detector object.
+
+    Attributes:
+        threshold (float, optional): Minimum threshold (percent) to identify 
+            an event. Defaults to 20.
+    """
 
     def __init__(self,
-                 threshold: float=20,
-                 frames_per_second: int=None):
-        
+                 threshold: float=20):
         self.threshold = threshold
-        # self.frames_per_second = frames_per_second
-    """
-    Initialize derivative detector object.
 
-    Parameters
-    ---------
-    threshold : float
-        Minimum percentile to identify an event.
+    def detect(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Compute derivatives and detect threshold crossings.
 
-    """  
-        
-    def detect(self, data):
+        Args:
+            data (pd.DataFrame): m (images) x n (trace) dataframe.
+
+        Returns:
+            pd.DataFrame: Indicator (Boolean) dataframe of the same dimensions as
+                input data.
+        """
         derivative = self._compute_derivative(data)
         return self._find_threshold_crossings(derivative)
+    
+    def _compute_derivative(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Compute element-wise difference.
 
-    def _compute_derivative(self, data):
-        kernel =  np.array([1, -1])
-        kwargs = {'v': kernel, 'mode': 'same'}
-        return data.apply(np.convolve, axis=0, **kwargs)
+        Args:
+            data (pd.DataFrame):  m (images) x n (trace) dataframe.
 
-    def _find_threshold_crossings(self, data):
-        def _detect_cross(s, threshold):
-            # threshold_val = np.percentile(s, threshold)
-            threshold_val = np.percentile(s[s>0], threshold)
-            events = s.where(s > threshold_val)
-            events[~np.isnan(events)] = 1
-            return events
+        Returns:
+            pd.DataFrame: Derivative dataframe.
+        """
 
-        kwargs = {'threshold': self.threshold}
-        return data.apply(_detect_cross, **kwargs)
+        return data.diff()
+    
+    def _find_threshold_crossings(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Return indicator dataframe for values whose derivatives pass a threshold.
 
+        Args:
+            data (pd.DataFrame): Set of first derivatives (i.e.,
+            element-wise differences).
+
+        Returns:
+            pd.DataFrame: Boolean dataframe.
+        """
+        q = np.divide(self.threshold, 100)
+        thresholds = data.quantile(q)
+        crossing_indices = data >= thresholds
+        # take derivative of indicator dataframe to ID events
+        return self._compute_derivative(crossing_indices)
 
 class StandardExtractor(BaseExtractor):
+    """Initialize event extractor object.
+
+    Attributes:
+        window (Tuple[int]): Backward and forward window in seconds 
+            defining an event.
+        frames_per_second (int, optional): Image aquisition rate.. Defaults to None.
+        threshold (float, optional):  Minimum percentile to identify an event. 
+            Passed to `BaseDetector()`. Defaults to 20.
+    """
 
     def __init__(self,
                  window: Tuple[int],
                  frames_per_second: int=None,
-                #  interframe_delay: float=None,
-                 threshold: float=20):
-        
-        
+                 threshold: float=20
+    ):  
         self.window = window
         self.frames_per_second = frames_per_second
         self.threshold = threshold
-    """
-    Initialize event extractor object.
-
-    Parameters
-    ---------
-    window : Tuple[int]
-        Backward and forward window in seconds defining an event.
-    frames_per_second : float
-    threshold : float
-        Minimum percentile to identify an event. Passed to `BaseDetector()`
 
 
-    Raises
-    ------
-    ValueError : Window size must be greater than interframe delay.
+    def detect_and_extract(self, data: pd.DataFrame) -> dict:
+        """Compute derivatives and extract events.
 
-    """  
+        Args:
+            data (pd.DataFrame): m (images) x n (trace) dataframe.
 
-    def detect_and_extract(self, data) -> dict:
+        Returns:
+            dict: Dictionary of events.
+        """
         detector = DerivativeDetector(threshold=self.threshold)
         detected = detector.detect(data)
 
         return self.extract(data, detected)
 
-    def extract(self, data, detected) -> dict:
-        identified = self._identify_events(data, detected)
+    def extract(self, data: pd.DataFrame, detected: pd.DataFrame) -> dict:
+        """Extract events using fixed window.
+
+        Args:
+            data (pd.DataFrame): m (images) x n (trace) dataframe.
+            detected (pd.DataFrame): dataframe of detected events.
+
+        Raises:
+            ValueError: `data` and `detected` must be the of the same dimensions.
+
+        Returns:
+            dict: Extracted events.
+        """
+        if data.shape != detected.shape:
+            raise ValueError("Data and event dataframes must be the same dimensions.")
+
+        identified = self._identify_events(detected)
+        window = self._convert_window_to_frames()
 
         extracted_events = {}
-        for column in data:
-            roi = identified[column]
-            events = np.split(roi, np.where(np.isnan(roi))[0])
-            events = [ev[~np.isnan(ev)] for ev in events]
-            events = [ev for ev in events if not ev.empty]
+
+        for column in data.columns:
+            
+            event_starts = identified[column]
+            roi = data[column]
+
+            indices = event_starts[event_starts == True].index
+
+            events = []
+            for index in indices:
+
+                min_idx = index - window[0]
+                max_idx = index + window[1]
+
+                start = min_idx if min_idx > 0 else 0
+                stop = max_idx if max_idx < len(roi) else len(roi)
+
+                events.append(roi.loc[start:stop])
 
             extracted_events[roi.name] = events
+
         return extracted_events
 
-    def _identify_events(self, data, detected):
-        window = self._convert_window_to_frames()
-        detected = (detected
-                    .bfill(limit=window[0])
-                    .ffill(limit=window[1])
-        )
-        return data[detected == 1]
+    def _identify_events(self, detected: pd.DataFrame):
+        """Identify events (where derivative = 0).
 
-    def _convert_window_to_frames(self):
+        Args:
+            detected (pd.DataFrame): Dataframe
+
+        Returns:
+            pd.DataFrame: Dataframe of identified events.
+        """
+
+        identified = detected[detected.diff() != 0] # only keep start of event
+        identified[identified == False] = np.NaN # non-events
+     
+        return detected
+
+    def _convert_window_to_frames(self) -> Tuple[int, int]:
+        """Convert window supplied in FPS to numbers of frames.
+
+        Returns:
+            Tuple[int, int]: Detection window expressed as numbers of frames
+                backward and forward respectively.
+        """
         fps = self.frames_per_second
-        return  tuple(int(w * fps) for w in self.window)
+        window = tuple(int(w * fps) for w in self.window)
+
+        print((f"With FPS = {self.frames_per_second}, a window of "
+               f"{self.window} seconds captures {window[0]} frame(s) "
+               f"before and {window[1]} frame(s) after each event."))
+
+        return window
     
