@@ -29,7 +29,7 @@ class DerivativeDetector(BaseDetector):
                 input data.
         """
         derivative = self._compute_derivative(data)
-        return self._find_threshold_crossings(derivative)
+        return derivative > self.threshold
     
     def _compute_derivative(self, data: pd.DataFrame) -> pd.DataFrame:
         """Compute element-wise difference.
@@ -42,22 +42,6 @@ class DerivativeDetector(BaseDetector):
         """
 
         return data.diff()
-    
-    def _find_threshold_crossings(self, data: pd.DataFrame) -> pd.DataFrame:
-        """Return indicator dataframe for values whose derivatives pass a threshold.
-
-        Args:
-            data (pd.DataFrame): Set of first derivatives (i.e.,
-            element-wise differences).
-
-        Returns:
-            pd.DataFrame: Boolean dataframe.
-        """
-        q = np.divide(self.threshold, 100)
-        thresholds = data.quantile(q)
-        crossing_indices = data >= thresholds
-        # take derivative of indicator dataframe to ID events
-        return self._compute_derivative(crossing_indices)
 
 class StandardExtractor(BaseExtractor):
     """Initialize event extractor object.

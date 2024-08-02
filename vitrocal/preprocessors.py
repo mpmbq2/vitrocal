@@ -103,14 +103,19 @@ class StandardPreprocessor(BasePreprocessor):
         Returns:
             pd.DataFrame: Filtered output in the same shape as `data`.
         """
-        b, a = self._construct_bessel_filter(
-            self.filter_frequency,
-            self.filter_order
-        )
 
-        filtered = filtfilt(b, a, data)
+        if self.filter_frequency is None:
+            print("No filter applied.")
+            return data
+        else:
+            b, a = self._construct_bessel_filter(
+                self.filter_frequency,
+                self.filter_order
+            )
 
-        return pd.DataFrame(filtered)
+            filtered = filtfilt(b, a, data)
+
+            return pd.DataFrame(filtered)
 
 
     def baseline(self, data: pd.DataFrame) -> pd.DataFrame:
