@@ -2,8 +2,6 @@
 
 Calcium imaging toolbox for in vitro imaging
 
-Made with ❤️ by Your full name (@Your GitHub username).
-
 ## Get started for development
 
 To get started:
