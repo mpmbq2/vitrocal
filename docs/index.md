@@ -1,6 +1,6 @@
-# VitroCal }}
+# VitroCal
 
-Welcome to the repository for the VitroCal }} project!
+Welcome to the repository for the VitroCal project!
 
 ## Quickstart
 
@@ -14,17 +14,21 @@ pip install vitrocal
 ### Install from source
 
 ```bash
-pip install git@github.com:Your GitHub username/vitrocal
+git clone git@github.com:mpmbq2/vitrocal.git
 ```
 
-### Build and preview docs
+We recommend creating a virtual environment.
 
 ```bash
-mkdocs serve
+cd vitrocal
+mamba env update -f environment.yml
+conda activate vitrocal
+python -m pip install .
 ```
 
-## Why this project exists
+## Example useage
 
-Place your reasons here for why this project exists.
-
-What benefits does this project give to users?
+```bash
+datacatalog = catalog.DataCatalog()
+df = datacatalog.load('data')
+```

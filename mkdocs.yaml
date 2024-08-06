@@ -31,11 +31,13 @@ plugins:
       default_handler: python
       handlers:
         python:
+          paths: [src]
           rendering:
             show_source: true
           # https://github.com/mkdocstrings/mkdocstrings/issues/278#issuecomment-831411193
           selection:
             docstring_style: restructured-text
+          show_submodules: true
       # custom_templates: templates
       watch:
         - VitroCal
