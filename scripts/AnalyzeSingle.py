@@ -78,7 +78,8 @@ def save_data(df: pd.DataFrame,
     fpath = os.path.join(fpath, fname)
     df.to_csv(fpath, index=False)
 
-def run(fpath_in: str | os.PathLike, fps: float=1/2.5, filter_frequency: float=None,
+def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
+        fps: float=1/2.5, filter_frequency: float=None,
          preprocess_window_size: float=60,
         baseline_threshold: float=10, bleach_period: float=60,
         detection_window: Tuple[int]=(3, 30), detection_threshold: float=20,
@@ -90,7 +91,7 @@ def run(fpath_in: str | os.PathLike, fps: float=1/2.5, filter_frequency: float=N
     See `vitrocal` for details.
     """
 
-    df, fname = load_data(fpath_in, load_args={'header': None})
+    df, fname = load_data(fpath_in, load_args=load_args)
     df = preprocess(df, fps, bleach_period, filter_frequency, 
                     baseline_threshold, preprocess_window_size)
     extracted_data = extract(df, detection_window, fps, detection_threshold)
