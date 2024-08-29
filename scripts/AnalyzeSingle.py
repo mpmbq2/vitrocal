@@ -20,7 +20,7 @@ def load_data(fpath: str | os.PathLike, load_args: dict=None) -> pd.DataFrame:
         pd.DataFrame: Dataframe
     """
     fname = os.path.basename(fpath)
-    dataset = ExcelDataset.ExcelDataset(fpath)
+    dataset = ExcelDataset.ExcelDataset(fpath, load_args)
     return dataset.load(), fname
 
 def preprocess(df: pd.DataFrame, fps, bleach_period, filter_frequency,
@@ -90,7 +90,7 @@ def run(fpath_in: str | os.PathLike, fps: float=1/2.5, filter_frequency: float=N
     See `vitrocal` for details.
     """
 
-    df, fname = load_data(fpath_in)
+    df, fname = load_data(fpath_in, load_args={'header': None})
     df = preprocess(df, fps, bleach_period, filter_frequency, 
                     baseline_threshold, preprocess_window_size)
     extracted_data = extract(df, detection_window, fps, detection_threshold)
