@@ -39,7 +39,9 @@ class StandardAnalyzer(BaseAnalyzer):
 
             results = pd.concat([results, tmp])
 
-        return results
+        avg_results = self.find_average_decay(results)
+
+        return results, avg_results
 
     def count_events(self, events: dict) -> dict:
         """Count number of events for each trace.
@@ -121,4 +123,26 @@ class StandardAnalyzer(BaseAnalyzer):
         return summary
 
         
+    def find_average_decay(self, decay: pd.DataFrame) -> pd.DataFrame:
+        """Return summary metrics for each event grouped by ROI.
 
+        Args:
+            decay (pd.DataFrame): Output from `StandardAnalyzer.find_event_decay()`
+
+        Returns:
+            pd.DataFrame: Average metrics per ROI.
+        """
+
+        agg_funcs = {
+            'total_events': pd.NamedAgg(column='event', aggfunc='count'),
+            'average_peak': pd.NamedAgg(column='peak', aggfunc='mean'),
+            'average_decay': pd.NamedAgg(column='decay', aggfunc='mean')
+
+        }
+        avg = decay.groupby(['roi']).agg(
+            total_events=agg_funcs['total_events'],
+            average_peak=agg_funcs['average_peak'],
+            average_decay=agg_funcs['average_decay']
+        )
+        
+        return avg.reset_index()
