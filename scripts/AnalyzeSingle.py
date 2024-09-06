@@ -84,7 +84,8 @@ def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
         baseline_threshold: float=10, bleach_period: float=60,
         detection_window: Tuple[int]=(3, 30), detection_threshold: float=20,
         upper_decay_bound: float=0.8, lower_decay_bound: float=0.2,
-        fpath_out: str | os.PathLike = "../data/02_intermediate/"
+        fpath_out: str | os.PathLike = "../data/02_intermediate/",
+        average=True
 ) -> None:
     """Produce analysis output for single input file.
 
@@ -95,8 +96,13 @@ def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
     df = preprocess(df, fps, bleach_period, filter_frequency, 
                     baseline_threshold, preprocess_window_size)
     extracted_data = extract(df, detection_window, fps, detection_threshold)
-    analyzed_data = analyze(extracted_data, upper_decay_bound, lower_decay_bound)
-    save_data(analyzed_data, fname, fpath_out)
+    results, avg_results = analyze(extracted_data, upper_decay_bound, lower_decay_bound)
+
+    save_data(results, fname, fpath_out)
+
+    if average:
+        fname_avg = fname.replace(".xlsx", "_avg.xlsx")
+        save_data(avg_results, fname_avg, fpath_out)
 
 
 if __name__ == "__main__":
