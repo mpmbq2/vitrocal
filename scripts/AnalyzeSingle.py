@@ -58,26 +58,30 @@ def analyze(events: dict, upper_decay_bound, lower_decay_bound) -> pd.DataFrame:
 
 def save_data(df: pd.DataFrame, 
               fname: str | os.PathLike, 
-              fpath: str | os.PathLike
+              fpath: str | os.PathLike,
+              format: str='excel'
 ) -> None:
     """Save analyzed events.
 
     Args:
         df (pd.DataFrame): Analyzed events.
         fname (str | os.PathLike): File name (with extension). 
-            `.xlsx` will be coerced to `.csv`.
+            `.xlsx` will be coerced to `.csv` unless format='excel'.
         fpath (str | os.PathLike, optional): File path. 
             Defaults to "../data/02_intermediate/".
+        format: (str): Accepts 'excel' or 'csv. 
     """
-    
-    # coerce .xlsx to csv
-    excel_ext = ".xlsx"
-    if excel_ext in fname:
-        fname = fname.replace(excel_ext, ".csv")
-
     fpath = os.path.join(fpath, fname)
-    df.to_csv(fpath, index=False)
-
+    # coerce .xlsx to csv
+    if format != 'excel':
+        excel_ext = ".xlsx"
+        if excel_ext in fpath:
+            fpath = fpath.replace(excel_ext, ".csv")
+        df.to_csv(fpath, index=False)
+    else:
+        df.to_excel(fpath, index=False)
+    
+    
 def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
         fps: float=1/2.5, filter_frequency: float=None,
          preprocess_window_size: float=60,
