@@ -21,7 +21,7 @@ class StandardAnalyzer(BaseAnalyzer):
         self.lower_decay_bound = lower_decay_bound
 
 
-    def analyze(self, events: dict) -> pd.DataFrame:
+    def analyze(self, events: dict, drop_inf=True) -> pd.DataFrame:
         """Return dataframe with event counts, peaks, and decay.
 
         Args:
@@ -36,6 +36,7 @@ class StandardAnalyzer(BaseAnalyzer):
         for roi, values in decay.items():
             tmp = pd.DataFrame(values)
             tmp.insert(0, 'roi', roi)
+            tmp = tmp.replace([np.inf, -np.inf], np.nan) # replace inf with missing
 
             results = pd.concat([results, tmp])
 

@@ -110,4 +110,4 @@ def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
 
 
 if __name__ == "__main__":
-    run(fpath_in="../data/01_raw/Fiji Neuron Output.xlsx")
+    run(fpath_in="../data/01_raw/E DMSO Green.xlsx")
