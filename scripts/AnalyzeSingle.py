@@ -84,7 +84,7 @@ def save_data(df: pd.DataFrame,
     
 def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
         fps: float=1/2.5, filter_frequency: float=None,
-         preprocess_window_size: float=60,
+        preprocess_window_size: float=60,
         baseline_threshold: float=10, bleach_period: float=60,
         detection_window: Tuple[int]=(3, 30), detection_threshold: float=20,
         upper_decay_bound: float=0.8, lower_decay_bound: float=0.2,
@@ -110,4 +110,4 @@ def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
 
 
 if __name__ == "__main__":
-    run(fpath_in="../data/01_raw/E DMSO Green.xlsx")
+    run(fpath_in="../data/01_raw/V3 Zori Green.xlsx")
