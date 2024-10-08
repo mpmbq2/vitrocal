@@ -9,12 +9,12 @@ from vitrocal.detectors import StandardExtractor
 from vitrocal.analyzers import StandardAnalyzer
 
 
-def load_data(fpath: str | os.PathLike, load_args: dict=None) -> pd.DataFrame:
+def load_data(fpath: str | os.PathLike, load_args: dict={}) -> pd.DataFrame:
     """Load single neuron output file.
 
     Args:
         fpath (str | os.PathLike): Path to single Excel spreadsheet.
-        load_args (dict, optional): Passed to `pd.read_excel()`. Defaults to None.
+        load_args (dict, optional): Passed to `pd.read_excel()`. Defaults to {}.
 
     Returns:
         pd.DataFrame: Dataframe
