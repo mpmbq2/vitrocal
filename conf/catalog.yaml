@@ -4,3 +4,27 @@ figi_output:
   load_args:
     header:
     index_col: 0
+
+e_green_dmso:
+  type: datasets.ExcelDataset
+  filepath: ../../data/01_raw/E DMSO Green.xlsx
+  load_args:
+    header:
+    index_col: 0
+
+e_green:
+  type: datasets.ExcelDataset
+  filepath: ../../data/01_raw/E Green.xlsx
+  load_args:
+    header:
+    index_col: 0
+
+
+zori_green:
+  type: datasets.ExcelDataset
+  filepath: ../../data/01_raw/V3 Zori Green.xlsx
+  load_args:
+    header:
+    index_col: 0
+
+
