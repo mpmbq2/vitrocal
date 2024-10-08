@@ -141,7 +141,7 @@ class StandardPreprocessor(BasePreprocessor):
     
     def compute_fluoresence_change(self, data: pd.DataFrame, 
                                    baseline: pd.DataFrame) -> pd.DataFrame:
-        """Compute changfe in flouresence from baseline.
+        """Compute percent change in flouresence from baseline.
 
         `(data - baseline) / baseline * 100`
 
