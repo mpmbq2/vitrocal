@@ -1,16 +1,17 @@
-import pandas as pd
+"""Detector and extractor classes for event detection and extraction."""
+from typing import Tuple
+
 import numpy as np
+import pandas as pd
 
 from .base import BaseDetector, BaseExtractor
-
-from typing import Tuple
 
 
 class DerivativeDetector(BaseDetector):
     """Initialize derivative detector object.
 
     Attributes:
-        threshold (float, optional): Minimum threshold (percent) to identify 
+        threshold (float, optional): Minimum threshold (percent) to identify
             an event. Defaults to 20.
     """
 
@@ -30,7 +31,7 @@ class DerivativeDetector(BaseDetector):
         """
         derivative = self._compute_derivative(data)
         return derivative > self.threshold
-    
+
     def _compute_derivative(self, data: pd.DataFrame) -> pd.DataFrame:
         """Compute element-wise difference.
 
@@ -47,10 +48,10 @@ class StandardExtractor(BaseExtractor):
     """Initialize event extractor object.
 
     Attributes:
-        window (Tuple[int]): Backward and forward window in seconds 
+        window (Tuple[int]): Backward and forward window in seconds
             defining an event.
         frames_per_second (int, optional): Image aquisition rate.. Defaults to None.
-        threshold (float, optional):  Minimum percentile to identify an event. 
+        threshold (float, optional):  Minimum percentile to identify an event.
             Passed to `BaseDetector()`. Defaults to 20.
     """
 
@@ -58,7 +59,7 @@ class StandardExtractor(BaseExtractor):
                  window: Tuple[int],
                  frames_per_second: int=None,
                  threshold: float=20
-    ):  
+    ):
         self.window = window
         self.frames_per_second = frames_per_second
         self.threshold = threshold
@@ -100,11 +101,11 @@ class StandardExtractor(BaseExtractor):
         extracted_events = {}
 
         for column in data.columns:
-            
+
             event_starts = identified[column]
             roi = data[column]
 
-            indices = event_starts[event_starts == True].index
+            indices = event_starts[event_starts is True].index
 
             events = []
             for index in indices:
@@ -132,8 +133,8 @@ class StandardExtractor(BaseExtractor):
         """
 
         identified = detected[detected.diff() != 0] # only keep start of event
-        identified[identified == False] = np.NaN # non-events
-     
+        identified[identified is False] = np.NaN # non-events
+
         return detected
 
     def _convert_window_to_frames(self) -> Tuple[int, int]:
@@ -151,4 +152,3 @@ class StandardExtractor(BaseExtractor):
                f"before and {window[1]} frame(s) after each event."))
 
         return window
-    

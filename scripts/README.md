@@ -1,6 +1,6 @@
 # Single and Batch Analysis Scripts
 
-Ready-made scripts to help with analyses. 
+Ready-made scripts to help with analyses.
 
 ## Useage
 
@@ -19,7 +19,7 @@ def run(fpath_in: str | os.PathLike, fps: float=1/2.5, filter_frequency: float=N
 
 These scripts will automatically create analysis output files with the same names
 as the input files. `AnalyzeBatch.py` calls `AnalyzeSingle.py` and repeats the analysis
-for all files in a given directory. 
+for all files in a given directory.
 
 Example call:
 

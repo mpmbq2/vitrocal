@@ -1,6 +1,6 @@
 # Datasets module
 
-Project datasets should be listed in `conf/catalog.yaml`. 
+Project datasets should be listed in `conf/catalog.yaml`.
 
 Example entry:
 

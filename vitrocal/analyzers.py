@@ -1,7 +1,10 @@
-import pandas as pd
+"""Module for analyzing extracted events.
+"""
 import numpy as np
+import pandas as pd
 
 from .base import BaseAnalyzer
+
 
 class StandardAnalyzer(BaseAnalyzer):
     """Initialize analyzer object.
@@ -16,7 +19,7 @@ class StandardAnalyzer(BaseAnalyzer):
                  upper_decay_bound: float=0.8,
                  lower_decay_bound: float=0.2
     ):
-        
+
         self.upper_decay_bound = upper_decay_bound
         self.lower_decay_bound = lower_decay_bound
 
@@ -55,7 +58,7 @@ class StandardAnalyzer(BaseAnalyzer):
         """
 
         return {k: len(v) for k, v in events.items()}
-    
+
     def find_event_peaks(self, events: dict) -> dict:
         """Find peak for each event.
 
@@ -67,7 +70,7 @@ class StandardAnalyzer(BaseAnalyzer):
         """
 
         return {k: [np.max(ev) for ev in v] for k, v in events.items()}
-    
+
     def find_event_decay(self, events: dict) -> dict:
         """Find event peaks and decay.
 
@@ -77,14 +80,22 @@ class StandardAnalyzer(BaseAnalyzer):
         Returns:
             dict: Summary dictionary.
         """
-        
-        def _handle_decay_values(x):
+
+        def _handle_decay_values(x: list) -> float:
+            """Handle decay values.
+
+            Args:
+                x (list): Detected bounds.
+
+            Returns:
+                float: Single bound.
+            """
             if len(x) >= 1:
                 bound = x[0]
             else:
                 bound = np.nan
             return bound
-        
+
         summary = {}
         for roi, sequence in events.items():
             sequence_summary = []
@@ -120,10 +131,10 @@ class StandardAnalyzer(BaseAnalyzer):
 
                 sequence_summary.append(res)
             summary[roi] = sequence_summary
-        
+
         return summary
 
-        
+
     def find_average_decay(self, decay: pd.DataFrame) -> pd.DataFrame:
         """Return summary metrics for each event grouped by ROI.
 
@@ -145,5 +156,5 @@ class StandardAnalyzer(BaseAnalyzer):
             average_peak=agg_funcs['average_peak'],
             average_decay=agg_funcs['average_decay']
         )
-        
+
         return avg.reset_index()

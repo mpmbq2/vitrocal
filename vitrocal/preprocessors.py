@@ -1,8 +1,9 @@
-import pandas as pd
+"""Preprocessor module."""
 import numpy as np
-
+import pandas as pd
 from pandas.api.indexers import FixedForwardWindowIndexer
 from scipy.signal import bessel, filtfilt
+
 from .base import BasePreprocessor
 
 
@@ -11,21 +12,21 @@ class StandardPreprocessor(BasePreprocessor):
 
     Attributes:
         frames_per_second (int, optional): Image aquisition rate. Defaults to None.
-        filter_frequency (float, optional): 
+        filter_frequency (float, optional):
             Lowpass filter frequency (Hz). Defaults to None.
-        filter_order (int, optional): 
+        filter_order (int, optional):
             Order passed to scipy.signal.bessel. Defaults to 1.
-        window_size (float, optional): 
+        window_size (float, optional):
             Size of rolling window to construct baseline values. Defaults to 60.
-        baseline_threshold (float, optional): 
-            Threshold below which to define baseline values (proportion). 
+        baseline_threshold (float, optional):
+            Threshold below which to define baseline values (proportion).
             Defaults to None.
-        bleach_period (float, optional): 
+        bleach_period (float, optional):
         Initial photobleaching period to be removed (seconds). Defaults to 60.
 
     """
 
-    def __init__(self, 
+    def __init__(self,
                  frames_per_second: int=None,
                  filter_frequency: float=None,
                  filter_order: int=1,
@@ -33,7 +34,7 @@ class StandardPreprocessor(BasePreprocessor):
                  baseline_threshold: float=None,
                  bleach_period: float=60,
         ):
-        
+
         self.frames_per_second = frames_per_second
         self.filter_frequency = filter_frequency
         self.filter_order = filter_order
@@ -41,7 +42,7 @@ class StandardPreprocessor(BasePreprocessor):
         self.baseline_threshold = baseline_threshold
         self.bleach_period = bleach_period
 
-        
+
     def preprocess(self, data: pd.DataFrame) -> pd.DataFrame:
         """Drop frames, filter, baseline, and compute flouresence change.
 
@@ -59,7 +60,7 @@ class StandardPreprocessor(BasePreprocessor):
         d_f = self.compute_fluoresence_change(data, baseline)
 
         return d_f
-    
+
     def drop_frames(self, data: pd.DataFrame) -> pd.DataFrame:
         """Drop frames for all traces.
 
@@ -78,11 +79,11 @@ class StandardPreprocessor(BasePreprocessor):
                 .iloc[initial_frames:]
                 .reset_index(drop=True)
         )
-    
+
     def _construct_bessel_filter(self, filter_frequency:float, filter_order:int):
         """Apply scipy.signal.bessel filter.
 
-        See https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.bessel.html # noqa
+        See https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.bessel.html
 
         Args:
             filter_frequency (float): Critical frequency.
@@ -90,10 +91,10 @@ class StandardPreprocessor(BasePreprocessor):
 
         Returns:
             b,a: Numerator (b) and denominator (a) polynomials.
-        """
+        """ # noqa: E501
         b, a = bessel(filter_order, filter_frequency)
         return b, a
-    
+
     def filter(self, data: pd.DataFrame) -> pd.DataFrame:
         """Apply filter object backward and forward.
 
@@ -138,8 +139,8 @@ class StandardPreprocessor(BasePreprocessor):
             .apply(np.percentile, kwargs={'q': self.baseline_threshold})
         )
         return baseline.iloc[::-1]
-    
-    def compute_fluoresence_change(self, data: pd.DataFrame, 
+
+    def compute_fluoresence_change(self, data: pd.DataFrame,
                                    baseline: pd.DataFrame) -> pd.DataFrame:
         """Compute percent change in flouresence from baseline.
 
@@ -153,4 +154,3 @@ class StandardPreprocessor(BasePreprocessor):
             pd.DataFrame: Dataframe with same dimensions as input data.
         """
         return (data - baseline) / baseline * 100
-    

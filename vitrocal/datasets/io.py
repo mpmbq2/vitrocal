@@ -1,13 +1,16 @@
-import pandas as pd
+"""Abstract dataset classes.
+"""
 from abc import ABC, abstractmethod
-from pathlib import PurePosixPath
 
 
 class AbstractDataset(ABC):
+    """Abstract class for dataset."""
     @abstractmethod
     def load(self):
+        """Loader base method."""
         return self._load()
-    
+
     @abstractmethod
     def save(self):
+        """Saver base method."""
         return self._save()

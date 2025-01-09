@@ -1,12 +1,14 @@
-import pandas as pd
-import numpy as np
+"""Analyze single neuron output file.
+"""
 import os
-
 from typing import Tuple
-from vitrocal.datasets import ExcelDataset
-from vitrocal.preprocessors import StandardPreprocessor
-from vitrocal.detectors import StandardExtractor
+
+import pandas as pd
+
 from vitrocal.analyzers import StandardAnalyzer
+from vitrocal.datasets import ExcelDataset
+from vitrocal.detectors import StandardExtractor
+from vitrocal.preprocessors import StandardPreprocessor
 
 
 def load_data(fpath: str | os.PathLike, load_args: dict={}) -> pd.DataFrame:
@@ -56,8 +58,8 @@ def analyze(events: dict, upper_decay_bound, lower_decay_bound) -> pd.DataFrame:
 
     return analyzer.analyze(events)
 
-def save_data(df: pd.DataFrame, 
-              fname: str | os.PathLike, 
+def save_data(df: pd.DataFrame,
+              fname: str | os.PathLike,
               fpath: str | os.PathLike,
               format: str='excel'
 ) -> None:
@@ -65,11 +67,11 @@ def save_data(df: pd.DataFrame,
 
     Args:
         df (pd.DataFrame): Analyzed events.
-        fname (str | os.PathLike): File name (with extension). 
+        fname (str | os.PathLike): File name (with extension).
             `.xlsx` will be coerced to `.csv` unless format='excel'.
-        fpath (str | os.PathLike, optional): File path. 
+        fpath (str | os.PathLike, optional): File path.
             Defaults to "../data/02_intermediate/".
-        format: (str): Accepts 'excel' or 'csv. 
+        format: (str): Accepts 'excel' or 'csv.
     """
     fpath = os.path.join(fpath, fname)
     # coerce .xlsx to csv
@@ -80,8 +82,8 @@ def save_data(df: pd.DataFrame,
         df.to_csv(fpath, index=False)
     else:
         df.to_excel(fpath, index=False)
-    
-    
+
+
 def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
         fps: float=1/2.5, filter_frequency: float=None,
         preprocess_window_size: float=60,
@@ -97,7 +99,7 @@ def run(fpath_in: str | os.PathLike, load_args: dict={'header': None},
     """
 
     df, fname = load_data(fpath_in, load_args=load_args)
-    df = preprocess(df, fps, bleach_period, filter_frequency, 
+    df = preprocess(df, fps, bleach_period, filter_frequency,
                     baseline_threshold, preprocess_window_size)
     extracted_data = extract(df, detection_window, fps, detection_threshold)
     results, avg_results = analyze(extracted_data, upper_decay_bound, lower_decay_bound)
