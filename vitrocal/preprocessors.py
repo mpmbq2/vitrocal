@@ -32,7 +32,6 @@ class StandardPreprocessor(BasePreprocessor):
                  window_size: float=60,
                  baseline_threshold: float=None,
                  bleach_period: float=60,
-                 column_minimum: float=None
         ):
         
         self.frames_per_second = frames_per_second
@@ -41,7 +40,6 @@ class StandardPreprocessor(BasePreprocessor):
         self.window_size = window_size
         self.baseline_threshold = baseline_threshold
         self.bleach_period = bleach_period
-        self.column_minimum = column_minimum
 
         
     def preprocess(self, data: pd.DataFrame) -> pd.DataFrame:
@@ -118,18 +116,6 @@ class StandardPreprocessor(BasePreprocessor):
             filtered = filtfilt(b, a, data)
 
             return pd.DataFrame(filtered)
-    
-    def drop_columns(self, data: pd.DataFrame) -> pd.DataFrame:
-        """Drop columns with values lower than `column_minimum`.
-
-        Args:
-            data (pd.DataFrame): m (images) x n (trace) dataframe
-        
-        Returns:
-            pd.DataFrame: Dataframe with values below minimum removed.
-
-        """
-        return data.loc[:, (data > self.column_minimum).all()]
 
 
     def baseline(self, data: pd.DataFrame) -> pd.DataFrame:
