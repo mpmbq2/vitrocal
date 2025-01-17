@@ -1,6 +1,7 @@
-# VitroCal
-
 Welcome to the repository for the VitroCal project!
+
+VitroCal is a Python-based toolbox for analyzing data collected through *in vitro*
+calcium imaging. The package is designed to be flexible and user-friendly.
 
 ## Quickstart
 

@@ -7,7 +7,7 @@ docs_dir: docs/
 theme:
   name: material
   icon:
-    logo: "fontawesome/solid/book"
+    logo: "fontawesome/solid/brain"
   features:
     - instant
     - tabs
@@ -54,10 +54,10 @@ extra_css:
 extra_javascript:
   - config.js
 
-repo_name: "Your GitHub username/vitrocal"
-repo_url: "https://github.com/Your GitHub username/vitrocal"
+repo_name: "mpmbq2/vitrocal"
+repo_url: "https://github.com/mpmbq2/vitrocal"
 
-extra:
-  social:
-    - icon: "fontawesome/brands/github"
-      link: "https://github.com/Your GitHub username"
+# extra:
+#   social:
+#     - icon: "fontawesome/brands/github"
+#       link: "https://github.com/Your GitHub username"

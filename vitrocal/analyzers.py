@@ -158,3 +158,20 @@ class StandardAnalyzer(BaseAnalyzer):
         )
 
         return avg.reset_index()
+
+    def find_average_event(self, events: dict) -> pd.Series:
+        """Index-wise average events.
+
+        Args:
+            events (dict): Detected events from `StandardExtractor.detect_and_extract()`
+
+        Returns:
+            pd.DataFrame: Index-wise average event.
+        """
+        combined = pd.Series()
+        for trac, values in events.items():
+            for sequence in values:
+                tmp = pd.Series(sequence)
+                combined = pd.concat([combined, tmp], axis=1).agg("mean", axis=1)
+
+        return combined.sort_index()

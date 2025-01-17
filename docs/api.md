@@ -1,4 +1,4 @@
-# Top-level API for VitroCal
+# API Reference
 
 ::: vitrocal
 
