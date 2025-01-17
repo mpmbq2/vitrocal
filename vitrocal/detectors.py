@@ -105,7 +105,9 @@ class StandardExtractor(BaseExtractor):
             event_starts = identified[column]
             roi = data[column]
 
-            indices = event_starts[event_starts is True].index
+            # indices = event_starts[event_starts is True].index
+            indices = event_starts[event_starts].index
+
 
             events = []
             for index in indices:
