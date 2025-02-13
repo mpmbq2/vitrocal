@@ -8,3 +8,4 @@
 ::: vitrocal.preprocessors
 ::: vitrocal.detectors
 ::: vitrocal.analyzers
+::: vitrocal.plotting

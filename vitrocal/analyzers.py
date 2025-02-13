@@ -159,19 +159,72 @@ class StandardAnalyzer(BaseAnalyzer):
 
         return avg.reset_index()
 
-    def find_average_event(self, events: dict) -> pd.Series:
-        """Index-wise average events.
+    # def find_average_event(self, events: dict) -> pd.Series:
+    #     """Index-wise average events.
 
-        Args:
-            events (dict): Detected events from `StandardExtractor.detect_and_extract()`
+    #     Args:
+    #         events (dict): Detected events from `StandardExtractor.detect_and_extract()`
 
-        Returns:
-            pd.DataFrame: Index-wise average event.
+    #     Returns:
+    #         pd.DataFrame: Index-wise average event.
+    #     """
+    #     combined = pd.Series()
+    #     for trac, values in events.items():
+    #         for sequence in values:
+    #             tmp = pd.Series(sequence)
+    #             combined = pd.concat([combined, tmp], axis=1).agg("mean", axis=1)
+
+    #     return combined.sort_index()
+
+    def find_average_event(self, events:dict) -> (pd.DataFrame, pd.DataFrame):
         """
-        combined = pd.Series()
-        for trac, values in events.items():
-            for sequence in values:
-                tmp = pd.Series(sequence)
-                combined = pd.concat([combined, tmp], axis=1).agg("mean", axis=1)
+        Find average events.
+        
+        Args:
+            events: dictionary of events
+        
+        Returns:
+            combined: combined dataframe of quantiles
+            event_data: dataframe of events
+        """
 
-        return combined.sort_index()
+        # get maximum event duration
+        max_length = 0
+        for roi, data in events.items():
+            for event in data:
+                if len(event) > max_length:
+                    max_length = len(event)
+
+
+        # combine events into a single dataframe
+        event_count = 0
+        event_data = pd.DataFrame()
+
+        for roi, data in events.items():
+            for event in data:
+                event = list(event)
+                if len(event) < max_length:
+                    event.extend([np.nan] * (max_length - len(event)))
+                tmp = pd.DataFrame({'flourescence': event})
+                tmp['index'] = range(len(tmp))
+                tmp['roi'] = roi
+                event_data = pd.concat([event_data, tmp], axis=0)
+                event_count += 1
+
+        
+        def _aggregate_events(x: pd.DataFrame):
+            q1 = x.quantile(.25)
+            q3 = x.quantile(.75)
+            median = x.median()
+            mean = x.mean()
+
+            combined = pd.concat([q1, q3, median, mean], axis=1)
+            combined.columns = ['q1', 'q3', 'median', 'mean']
+
+            return combined
+
+
+        global_average = _aggregate_events(event_data.drop(columns='roi').groupby('index'))
+        roi_average = _aggregate_events(event_data.groupby(['roi', 'index']))
+
+        return global_average, roi_average.reset_index(), event_data

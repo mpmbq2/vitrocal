@@ -5,7 +5,7 @@ docs_dir: docs/
 
 # For more configuration on the theme, see https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
-  name: material
+  name: readthedocs
   icon:
     logo: "fontawesome/solid/brain"
   features:
@@ -16,10 +16,15 @@ theme:
 # We customize the navigation by hand to control the order
 # in which pages show up.
 
+nav:
+  - Home: index.md
+  - Example: ParameterTune.ipynb
+  - API Reference: api.md
+
 plugins:
   - search
   - mknotebooks:
-      execute: true
+      execute: false
       write_markdown: true
       allow_errors: false
       timeout: 1200
@@ -31,7 +36,7 @@ plugins:
       default_handler: python
       handlers:
         python:
-          paths: [src]
+          paths: [src, notebooks]
           rendering:
             show_source: true
           # https://github.com/mkdocstrings/mkdocstrings/issues/278#issuecomment-831411193
