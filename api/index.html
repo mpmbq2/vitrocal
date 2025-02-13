@@ -1,1164 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://mpmbq2.github.io/vitrocal/api/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API Reference - VitroCal</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../apidocs.css" rel="stylesheet" />
+        <link href="../css/ansi-colours.css" rel="stylesheet" />
+        <link href="../css/jupyter-cells.css" rel="stylesheet" />
+        <link href="../css/pandas-dataframe.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API Reference";
+        var mkdocs_page_input_path = "api.md";
+        var mkdocs_page_url = "/vitrocal/api/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-        <link rel="canonical" href="https://mpmbq2.github.io/vitrocal/api/">
-      
-      
-        <link rel="prev" href="..">
-      
-      
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
-    
-    
-      
-        <title>API Reference - VitroCal</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
-      
-      
+<body class="wy-body-for-nav" role="document">
 
-
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
-    
-      <link rel="stylesheet" href="../apidocs.css">
-    
-      <link rel="stylesheet" href="../css/ansi-colours.css">
-    
-      <link rel="stylesheet" href="../css/jupyter-cells.css">
-    
-      <link rel="stylesheet" href="../css/pandas-dataframe.css">
-    
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-  </head>
-  
-  
-    <body dir="ltr">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#api-reference" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="VitroCal" class="md-header__button md-logo" aria-label="VitroCal" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M184 0c30.9 0 56 25.1 56 56v400c0 30.9-25.1 56-56 56-28.9 0-52.7-21.9-55.7-50.1-5.2 1.4-10.7 2.1-16.3 2.1-35.3 0-64-28.7-64-64 0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1 3-28 26.8-49.9 55.7-49.9zm144 0c28.9 0 52.6 21.9 55.7 49.9C411.5 56.9 432 82 432 112c0 6-.8 11.9-2.4 17.4 28.8 6.2 50.4 31.9 50.4 62.6 0 15-5.1 28.8-13.8 39.7 27.1 12.8 45.8 40.4 45.8 72.3 0 34.2-21.4 63.4-51.6 74.8 2.3 6.6 3.6 13.8 3.6 21.2 0 35.3-28.7 64-64 64-5.6 0-11.1-.7-16.3-2.1-3 28.2-26.8 50.1-55.7 50.1-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            VitroCal
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              API Reference
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-    
-      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> VitroCal
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
 </div>
-    
-    
-      <div class="md-header__source">
-        <a href="https://github.com/mpmbq2/vitrocal" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    mpmbq2/vitrocal
-  </div>
-</a>
       </div>
-    
-  </nav>
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
 
-
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="VitroCal" class="md-nav__button md-logo" aria-label="VitroCal" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M184 0c30.9 0 56 25.1 56 56v400c0 30.9-25.1 56-56 56-28.9 0-52.7-21.9-55.7-50.1-5.2 1.4-10.7 2.1-16.3 2.1-35.3 0-64-28.7-64-64 0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1 3-28 26.8-49.9 55.7-49.9zm144 0c28.9 0 52.6 21.9 55.7 49.9C411.5 56.9 432 82 432 112c0 6-.8 11.9-2.4 17.4 28.8 6.2 50.4 31.9 50.4 62.6 0 15-5.1 28.8-13.8 39.7 27.1 12.8 45.8 40.4 45.8 72.3 0 34.2-21.4 63.4-51.6 74.8 2.3 6.6 3.6 13.8 3.6 21.2 0 35.3-28.7 64-64 64-5.6 0-11.1-.7-16.3-2.1-3 28.2-26.8 50.1-55.7 50.1-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z"/></svg>
-
-    </a>
-    VitroCal
-  </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/mpmbq2/vitrocal" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    mpmbq2/vitrocal
-  </div>
-</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ParameterTune/">Example</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">API Reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal">vitrocal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.datasets.catalog">catalog</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.datasets.catalog.AbstractCatalog">AbstractCatalog</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.datasets.catalog.AbstractCatalog.load">load</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.datasets.catalog.AbstractCatalog.parse_catalog">parse_catalog</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.datasets.catalog.DataCatalog">DataCatalog</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.datasets.catalog.DataCatalog.load">load</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.datasets.catalog.DataCatalog.parse_catalog">parse_catalog</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.datasets.ExcelDataset">ExcelDataset</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.datasets.ExcelDataset.ExcelDataset">ExcelDataset</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.datasets.ExcelDataset.ExcelDataset.load">load</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.datasets.ExcelDataset.ExcelDataset.save">save</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.datasets.io">io</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.datasets.io.AbstractDataset">AbstractDataset</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.datasets.io.AbstractDataset.load">load</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.datasets.io.AbstractDataset.save">save</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.preprocessors">preprocessors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.preprocessors.StandardPreprocessor">StandardPreprocessor</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.preprocessors.StandardPreprocessor.baseline">baseline</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.preprocessors.StandardPreprocessor.compute_fluoresence_change">compute_fluoresence_change</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.preprocessors.StandardPreprocessor.drop_frames">drop_frames</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.preprocessors.StandardPreprocessor.filter">filter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.preprocessors.StandardPreprocessor.preprocess">preprocess</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.detectors">detectors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.detectors.DerivativeDetector">DerivativeDetector</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.detectors.DerivativeDetector.detect">detect</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.detectors.StandardExtractor">StandardExtractor</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.detectors.StandardExtractor.detect_and_extract">detect_and_extract</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.detectors.StandardExtractor.extract">extract</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.analyzers">analyzers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.analyzers.StandardAnalyzer">StandardAnalyzer</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.analyzers.StandardAnalyzer.analyze">analyze</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.analyzers.StandardAnalyzer.count_events">count_events</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.analyzers.StandardAnalyzer.find_average_decay">find_average_decay</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.analyzers.StandardAnalyzer.find_average_event">find_average_event</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.analyzers.StandardAnalyzer.find_event_decay">find_event_decay</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vitrocal.analyzers.StandardAnalyzer.find_event_peaks">find_event_peaks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.plotting">plotting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.plotting.plot_average_event">plot_average_event</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vitrocal.plotting.plot_events">plot_events</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
     </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
+    </nav>
 
-      </a>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">VitroCal</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/mpmbq2/vitrocal/edit/master/docs/api.md">Edit on mpmbq2/vitrocal</a>
     </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    API Reference
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    API Reference
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal" class="md-nav__link">
-    <span class="md-ellipsis">
-      vitrocal
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      catalog
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.AbstractCatalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      AbstractCatalog
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AbstractCatalog">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.AbstractCatalog.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      load
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.AbstractCatalog.parse_catalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      parse_catalog
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.DataCatalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      DataCatalog
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DataCatalog">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.DataCatalog.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      load
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.DataCatalog.parse_catalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      parse_catalog
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.ExcelDataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      ExcelDataset
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.ExcelDataset.ExcelDataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      ExcelDataset
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ExcelDataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.ExcelDataset.ExcelDataset.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      load
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.ExcelDataset.ExcelDataset.save" class="md-nav__link">
-    <span class="md-ellipsis">
-      save
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.io" class="md-nav__link">
-    <span class="md-ellipsis">
-      io
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.io.AbstractDataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      AbstractDataset
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AbstractDataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.io.AbstractDataset.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      load
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.io.AbstractDataset.save" class="md-nav__link">
-    <span class="md-ellipsis">
-      save
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors" class="md-nav__link">
-    <span class="md-ellipsis">
-      preprocessors
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor" class="md-nav__link">
-    <span class="md-ellipsis">
-      StandardPreprocessor
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="StandardPreprocessor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.baseline" class="md-nav__link">
-    <span class="md-ellipsis">
-      baseline
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.compute_fluoresence_change" class="md-nav__link">
-    <span class="md-ellipsis">
-      compute_fluoresence_change
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.drop_frames" class="md-nav__link">
-    <span class="md-ellipsis">
-      drop_frames
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.filter" class="md-nav__link">
-    <span class="md-ellipsis">
-      filter
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.preprocess" class="md-nav__link">
-    <span class="md-ellipsis">
-      preprocess
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.detectors" class="md-nav__link">
-    <span class="md-ellipsis">
-      detectors
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.detectors.DerivativeDetector" class="md-nav__link">
-    <span class="md-ellipsis">
-      DerivativeDetector
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DerivativeDetector">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.detectors.DerivativeDetector.detect" class="md-nav__link">
-    <span class="md-ellipsis">
-      detect
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.detectors.StandardExtractor" class="md-nav__link">
-    <span class="md-ellipsis">
-      StandardExtractor
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="StandardExtractor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.detectors.StandardExtractor.detect_and_extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      detect_and_extract
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.detectors.StandardExtractor.extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      extract
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.analyzers" class="md-nav__link">
-    <span class="md-ellipsis">
-      analyzers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer" class="md-nav__link">
-    <span class="md-ellipsis">
-      StandardAnalyzer
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="StandardAnalyzer">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.analyze" class="md-nav__link">
-    <span class="md-ellipsis">
-      analyze
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.count_events" class="md-nav__link">
-    <span class="md-ellipsis">
-      count_events
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.find_average_decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      find_average_decay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.find_average_event" class="md-nav__link">
-    <span class="md-ellipsis">
-      find_average_event
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.find_event_decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      find_event_decay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.find_event_peaks" class="md-nav__link">
-    <span class="md-ellipsis">
-      find_event_peaks
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.plotting" class="md-nav__link">
-    <span class="md-ellipsis">
-      plotting
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.plotting.plot_average_event" class="md-nav__link">
-    <span class="md-ellipsis">
-      plot_average_event
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.plotting.plot_events" class="md-nav__link">
-    <span class="md-ellipsis">
-      plot_events
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
   </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal" class="md-nav__link">
-    <span class="md-ellipsis">
-      vitrocal
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      catalog
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.AbstractCatalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      AbstractCatalog
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AbstractCatalog">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.AbstractCatalog.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      load
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.AbstractCatalog.parse_catalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      parse_catalog
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.DataCatalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      DataCatalog
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DataCatalog">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.DataCatalog.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      load
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.catalog.DataCatalog.parse_catalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      parse_catalog
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.ExcelDataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      ExcelDataset
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.ExcelDataset.ExcelDataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      ExcelDataset
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ExcelDataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.ExcelDataset.ExcelDataset.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      load
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.ExcelDataset.ExcelDataset.save" class="md-nav__link">
-    <span class="md-ellipsis">
-      save
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.io" class="md-nav__link">
-    <span class="md-ellipsis">
-      io
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.datasets.io.AbstractDataset" class="md-nav__link">
-    <span class="md-ellipsis">
-      AbstractDataset
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AbstractDataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.io.AbstractDataset.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      load
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.datasets.io.AbstractDataset.save" class="md-nav__link">
-    <span class="md-ellipsis">
-      save
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors" class="md-nav__link">
-    <span class="md-ellipsis">
-      preprocessors
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor" class="md-nav__link">
-    <span class="md-ellipsis">
-      StandardPreprocessor
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="StandardPreprocessor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.baseline" class="md-nav__link">
-    <span class="md-ellipsis">
-      baseline
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.compute_fluoresence_change" class="md-nav__link">
-    <span class="md-ellipsis">
-      compute_fluoresence_change
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.drop_frames" class="md-nav__link">
-    <span class="md-ellipsis">
-      drop_frames
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.filter" class="md-nav__link">
-    <span class="md-ellipsis">
-      filter
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.preprocessors.StandardPreprocessor.preprocess" class="md-nav__link">
-    <span class="md-ellipsis">
-      preprocess
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.detectors" class="md-nav__link">
-    <span class="md-ellipsis">
-      detectors
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.detectors.DerivativeDetector" class="md-nav__link">
-    <span class="md-ellipsis">
-      DerivativeDetector
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DerivativeDetector">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.detectors.DerivativeDetector.detect" class="md-nav__link">
-    <span class="md-ellipsis">
-      detect
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.detectors.StandardExtractor" class="md-nav__link">
-    <span class="md-ellipsis">
-      StandardExtractor
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="StandardExtractor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.detectors.StandardExtractor.detect_and_extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      detect_and_extract
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.detectors.StandardExtractor.extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      extract
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.analyzers" class="md-nav__link">
-    <span class="md-ellipsis">
-      analyzers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer" class="md-nav__link">
-    <span class="md-ellipsis">
-      StandardAnalyzer
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="StandardAnalyzer">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.analyze" class="md-nav__link">
-    <span class="md-ellipsis">
-      analyze
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.count_events" class="md-nav__link">
-    <span class="md-ellipsis">
-      count_events
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.find_average_decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      find_average_decay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.find_average_event" class="md-nav__link">
-    <span class="md-ellipsis">
-      find_average_event
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.find_event_decay" class="md-nav__link">
-    <span class="md-ellipsis">
-      find_event_decay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vitrocal.analyzers.StandardAnalyzer.find_event_peaks" class="md-nav__link">
-    <span class="md-ellipsis">
-      find_event_peaks
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.plotting" class="md-nav__link">
-    <span class="md-ellipsis">
-      plotting
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.plotting.plot_average_event" class="md-nav__link">
-    <span class="md-ellipsis">
-      plot_average_event
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vitrocal.plotting.plot_events" class="md-nav__link">
-    <span class="md-ellipsis">
-      plot_events
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-  
-  
-
-
-<h1 id="api-reference">API Reference</h1>
+                <h1 id="api-reference">API Reference</h1>
 
 
 <div class="doc doc-object doc-module">
@@ -1307,27 +327,27 @@
       <p>Define loader for dataset.</p>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              –
               <div class="doc-md-description">
                 <p>Method</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/datasets/catalog.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
@@ -1369,27 +389,27 @@
       <p>Define parser for catalog file.</p>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              –
               <div class="doc-md-description">
                 <p>Method.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/datasets/catalog.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
@@ -1538,55 +558,50 @@ https://kedro.org.</p>
       <p>Loader function.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>dataset</code></td>
-            <td>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>dataset</code></b>
+              –
               <div class="doc-md-description">
                 <p>Valid dataset name.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              –
               <div class="doc-md-description">
                 <p>Dataset.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/datasets/catalog.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
@@ -1638,28 +653,28 @@ https://kedro.org.</p>
       <p>Parse catalog file.</p>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>dict</code></td>            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><autoref identifier="dict" optional>dict</autoref></code>
+)              –
               <div class="doc-md-description">
                 <p>Dataset dictionary.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/datasets/catalog.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">55</span>
@@ -1808,28 +823,28 @@ https://kedro.org.</p>
       <p>Loader function.</p>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Dataframe.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/datasets/ExcelDataset.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
@@ -2092,86 +1107,70 @@ https://kedro.org.</p>
       <p>Preprocessor object class.</p>
 
 
-<p><span class="doc-section-title">Attributes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.preprocessors.StandardPreprocessor.frames_per_second" optional hover>frames_per_second</autoref></code></td>
-            <td>
-                  <code><autoref identifier="int" optional>int</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>frames_per_second</code></b>
+                  (<code><autoref identifier="int" optional>int</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Image aquisition rate. Defaults to None.</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.preprocessors.StandardPreprocessor.filter_frequency" optional hover>filter_frequency</autoref></code></td>
-            <td>
-                  <code><autoref identifier="float" optional>float</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>filter_frequency</code></b>
+                  (<code><autoref identifier="float" optional>float</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Lowpass filter frequency (Hz). Defaults to None.</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.preprocessors.StandardPreprocessor.filter_order" optional hover>filter_order</autoref></code></td>
-            <td>
-                  <code><autoref identifier="int" optional>int</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>filter_order</code></b>
+                  (<code><autoref identifier="int" optional>int</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Order passed to scipy.signal.bessel. Defaults to 1.</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.preprocessors.StandardPreprocessor.window_size" optional hover>window_size</autoref></code></td>
-            <td>
-                  <code><autoref identifier="float" optional>float</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>window_size</code></b>
+                  (<code><autoref identifier="float" optional>float</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Size of rolling window to construct baseline values. Defaults to 60.</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.preprocessors.StandardPreprocessor.baseline_threshold" optional hover>baseline_threshold</autoref></code></td>
-            <td>
-                  <code><autoref identifier="float" optional>float</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>baseline_threshold</code></b>
+                  (<code><autoref identifier="float" optional>float</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Threshold below which to define baseline values (proportion).
 Defaults to None.</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.preprocessors.StandardPreprocessor.bleach_period" optional hover>bleach_period</autoref></code></td>
-            <td>
-                  <code><autoref identifier="float" optional>float</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>bleach_period</code></b>
+                  (<code><autoref identifier="float" optional>float</autoref></code>)
+              –
               <div class="doc-md-description">
                 
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
               <details class="quote">
                 <summary>Source code in <code>vitrocal/preprocessors.py</code></summary>
                 <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 10</span>
@@ -2500,57 +1499,52 @@ Defaults to None.</p>
       <p>Identify baseline fluoresence using a backward-looking rolling window.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>data</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>data</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>m (images) x n (trace) dataframe.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Dataframe with same dimensions as input data.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/preprocessors.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
@@ -2613,71 +1607,60 @@ Defaults to None.</p>
 <p><code>(data - baseline) / baseline * 100</code></p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>data</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>data</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>m (images) x n (trace) input dataframe.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>baseline</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>baseline</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>m (images) x n (trace) baseline dataframe.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Dataframe with same dimensions as input data.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/preprocessors.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
@@ -2727,57 +1710,52 @@ Defaults to None.</p>
       <p>Drop frames for all traces.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>data</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>data</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>m (images) x n (trace) dataframe.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Dataframe with initial frames (rows) dropped.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/preprocessors.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
@@ -2835,57 +1813,52 @@ Defaults to None.</p>
       <p>Apply filter object backward and forward.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>data</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>data</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>ROI x image array.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Filtered output in the same shape as <code>data</code>.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/preprocessors.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
@@ -2951,58 +1924,53 @@ Defaults to None.</p>
       <p>Drop frames, filter, baseline, and compute flouresence change.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>data</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>data</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>m (images) x n (trace) dataframe.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Flouresence change dataframe with thes same dimensions
 as input data.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/preprocessors.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
@@ -3100,31 +2068,30 @@ as input data.</p>
       <p>Initialize derivative detector object.</p>
 
 
-<p><span class="doc-section-title">Attributes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.detectors.DerivativeDetector.threshold" optional hover>threshold</autoref></code></td>
-            <td>
-                  <code><autoref identifier="float" optional>float</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>threshold</code></b>
+                  (<code><autoref identifier="float" optional>float</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Minimum threshold (percent) to identify
 an event. Defaults to 20.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
               <details class="quote">
                 <summary>Source code in <code>vitrocal/detectors.py</code></summary>
                 <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
@@ -3227,58 +2194,53 @@ an event. Defaults to 20.</p>
       <p>Compute derivatives and detect threshold crossings.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>data</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>data</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>m (images) x n (trace) dataframe.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Indicator (Boolean) dataframe of the same dimensions as
 input data.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/detectors.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
@@ -3337,54 +2299,47 @@ input data.</p>
       <p>Initialize event extractor object.</p>
 
 
-<p><span class="doc-section-title">Attributes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.detectors.StandardExtractor.window" optional hover>window</autoref></code></td>
-            <td>
-                  <code><autoref identifier="typing.Tuple" optional hover>Tuple</autoref>[<autoref identifier="int" optional>int</autoref>]</code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>window</code></b>
+                  (<code><autoref identifier="typing.Tuple" optional hover>Tuple</autoref>[<autoref identifier="int" optional>int</autoref>]</code>)
+              –
               <div class="doc-md-description">
                 <p>Backward and forward window in seconds
 defining an event.</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.detectors.StandardExtractor.frames_per_second" optional hover>frames_per_second</autoref></code></td>
-            <td>
-                  <code><autoref identifier="int" optional>int</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>frames_per_second</code></b>
+                  (<code><autoref identifier="int" optional>int</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Image aquisition rate.. Defaults to None.</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.detectors.StandardExtractor.threshold" optional hover>threshold</autoref></code></td>
-            <td>
-                  <code><autoref identifier="float" optional>float</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>threshold</code></b>
+                  (<code><autoref identifier="float" optional>float</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Minimum percentile to identify an event.
 Passed to <code>BaseDetector()</code>. Defaults to 20.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
               <details class="quote">
                 <summary>Source code in <code>vitrocal/detectors.py</code></summary>
                 <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 47</span>
@@ -3633,57 +2588,52 @@ Passed to <code>BaseDetector()</code>. Defaults to 20.</p>
       <p>Compute derivatives and extract events.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>data</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>data</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>m (images) x n (trace) dataframe.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>dict</code></td>            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><autoref identifier="dict" optional>dict</autoref></code>
+)              –
               <div class="doc-md-description">
                 <p>Dictionary of events.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/detectors.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
@@ -3731,94 +2681,83 @@ Passed to <code>BaseDetector()</code>. Defaults to 20.</p>
       <p>Extract events using fixed window.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>data</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>data</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>m (images) x n (trace) dataframe.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>detected</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>detected</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>dataframe of detected events.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="ValueError" optional>ValueError</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p><code>data</code> and <code>detected</code> must be the of the same dimensions.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>dict</code></td>            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><autoref identifier="dict" optional>dict</autoref></code>
+)              –
               <div class="doc-md-description">
                 <p>Extracted events.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/detectors.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 82</span>
@@ -3968,43 +2907,39 @@ Passed to <code>BaseDetector()</code>. Defaults to 20.</p>
       <p>Initialize analyzer object.</p>
 
 
-<p><span class="doc-section-title">Attributes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.analyzers.StandardAnalyzer.upper_decay_bound" optional hover>upper_decay_bound</autoref></code></td>
-            <td>
-                  <code><autoref identifier="float" optional>float</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>upper_decay_bound</code></b>
+                  (<code><autoref identifier="float" optional>float</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Proportion of data to denote
 upper bound. Defaults to 0.8.</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><autoref identifier="vitrocal.analyzers.StandardAnalyzer.lower_decay_bound" optional hover>lower_decay_bound</autoref></code></td>
-            <td>
-                  <code><autoref identifier="float" optional>float</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>lower_decay_bound</code></b>
+                  (<code><autoref identifier="float" optional>float</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Proprtion of data to denote
 lower bound. Defaults to 0.2.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
               <details class="quote">
                 <summary>Source code in <code>vitrocal/analyzers.py</code></summary>
                 <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  9</span>
@@ -4479,57 +3414,52 @@ lower bound. Defaults to 0.2.</p>
       <p>Return dataframe with event counts, peaks, and decay.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>events</code></td>
-            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>events</code></b>
+                  (<code><autoref identifier="dict" optional>dict</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Detected events from <code>StandardExtractor.detect_and_extract()</code></p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Summary dataframe.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/analyzers.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
@@ -4595,57 +3525,52 @@ lower bound. Defaults to 0.2.</p>
       <p>Count number of events for each trace.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>events</code></td>
-            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>events</code></b>
+                  (<code><autoref identifier="dict" optional>dict</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Detected events from <code>StandardExtractor.detect_and_extract()</code></p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>dict</code></td>            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><autoref identifier="dict" optional>dict</autoref></code>
+)              –
               <div class="doc-md-description">
                 <p>Counts.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/analyzers.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">50</span>
@@ -4689,57 +3614,52 @@ lower bound. Defaults to 0.2.</p>
       <p>Return summary metrics for each event grouped by ROI.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>decay</code></td>
-            <td>
-                  <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>decay</code></b>
+                  (<code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Output from <code>StandardAnalyzer.find_event_decay()</code></p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
                   <code><autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref></code>
-            </td>
-            <td>
+              –
               <div class="doc-md-description">
                 <p>pd.DataFrame: Average metrics per ROI.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/analyzers.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
@@ -4807,67 +3727,59 @@ lower bound. Defaults to 0.2.</p>
       <p>Find average events.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>events</code></td>
-            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>events</code></b>
+                  (<code><autoref identifier="dict" optional>dict</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>dictionary of events</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>combined</code></td>            <td>
-                  <code>(<autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref>, <autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref>)</code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>combined</code></b>(                  <code>(<autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref>, <autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref>)</code>
+)              –
               <div class="doc-md-description">
                 <p>combined dataframe of quantiles</p>
               </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-<td><code>event_data</code></td>            <td>
-                  <code>(<autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref>, <autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref>)</code>
-            </td>
-            <td>
+            </li>
+            <li>
+<b><code>event_data</code></b>(                  <code>(<autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref>, <autoref identifier="pandas.DataFrame" optional hover>DataFrame</autoref>)</code>
+)              –
               <div class="doc-md-description">
                 <p>dataframe of events</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/analyzers.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">179</span>
@@ -4993,57 +3905,52 @@ lower bound. Defaults to 0.2.</p>
       <p>Find event peaks and decay.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>events</code></td>
-            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>events</code></b>
+                  (<code><autoref identifier="dict" optional>dict</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Detected events from <code>StandardExtractor.detect_and_extract()</code></p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>dict</code></td>            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><autoref identifier="dict" optional>dict</autoref></code>
+)              –
               <div class="doc-md-description">
                 <p>Summary dictionary.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/analyzers.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 74</span>
@@ -5189,57 +4096,52 @@ lower bound. Defaults to 0.2.</p>
       <p>Find peak for each event.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>events</code></td>
-            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>events</code></b>
+                  (<code><autoref identifier="dict" optional>dict</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>Detected events from <code>StandardExtractor.detect_and_extract()</code></p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>dict</code></td>            <td>
-                  <code><autoref identifier="dict" optional>dict</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><autoref identifier="dict" optional>dict</autoref></code>
+)              –
               <div class="doc-md-description">
                 <p>Event peaks.</p>
               </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/analyzers.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
@@ -5321,118 +4223,89 @@ lower bound. Defaults to 0.2.</p>
       <p>Plots the average detected event with the 25th and 75th percentiles shaded in.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>combined</code></td>
-            <td>
-                  <code><autoref identifier="DataFrame" optional>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>combined</code></b>
+                  (<code><autoref identifier="DataFrame" optional>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>A DataFrame with columns 'median', 'q1', and 'q3'.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>title</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>title</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;Average Detected Event&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The title of the plot.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;Average Detected Event&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>ylabel</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>ylabel</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;df/F&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The label for the y-axis.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;df/F&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>xlabel</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>xlabel</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;Time&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The label for the x-axis.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;Time&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>line_color</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>line_color</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;black&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The color of the line.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;black&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>fill_color</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>fill_color</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;C0&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The color of the fill.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;C0&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>ax</code></td>
-            <td>
-                  <code><autoref identifier="Axes" optional>Axes</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>ax</code></b>
+                  (<code><autoref identifier="Axes" optional>Axes</autoref></code>, default:
+                      <code>None</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The axes to plot on. If None, a new figure is created.</p>
               </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/plotting.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
@@ -5518,118 +4391,89 @@ lower bound. Defaults to 0.2.</p>
       <p>Plots the detected events for a given ROI.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>events_df</code></td>
-            <td>
-                  <code><autoref identifier="DataFrame" optional>DataFrame</autoref></code>
-            </td>
-            <td>
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>events_df</code></b>
+                  (<code><autoref identifier="DataFrame" optional>DataFrame</autoref></code>)
+              –
               <div class="doc-md-description">
                 <p>A DataFrame with columns 'roi', 'time', and 'flourescence'.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>roi</code></td>
-            <td>
-                  <code><autoref identifier="int" optional>int</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>roi</code></b>
+                  (<code><autoref identifier="int" optional>int</autoref></code>, default:
+                      <code>0</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The region of interest to plot.</p>
               </div>
-            </td>
-            <td>
-                  <code>0</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>title</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>title</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;Detected Events for ROI&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The title of the plot.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;Detected Events for ROI&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>xlab</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>xlab</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;Time (s)&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The label for the x-axis.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;Time (s)&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>ylab</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>ylab</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;dF/F&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The label for the y-axis.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;dF/F&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>color</code></td>
-            <td>
-                  <code><autoref identifier="str" optional>str</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>color</code></b>
+                  (<code><autoref identifier="str" optional>str</autoref></code>, default:
+                      <code>&#39;C0&#39;</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The color of the line.</p>
               </div>
-            </td>
-            <td>
-                  <code>&#39;C0&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>ax</code></td>
-            <td>
-                  <code><autoref identifier="Axes" optional>Axes</autoref></code>
-            </td>
-            <td>
+            </li>
+            <li>
+              <b><code>ax</code></b>
+                  (<code><autoref identifier="Axes" optional>Axes</autoref></code>, default:
+                      <code>None</code>
+)
+              –
               <div class="doc-md-description">
                 <p>The axes to plot on. If None, a new figure is created.</p>
               </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
             <details class="quote">
               <summary>Source code in <code>vitrocal/plotting.py</code></summary>
               <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
@@ -5696,59 +4540,53 @@ lower bound. Defaults to 0.2.</p>
     </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </article>
+              
             </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
-        </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ParameterTune/" class="btn btn-neutral float-left" title="Example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
   </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/mpmbq2/vitrocal" class="fa fa-code-fork" style="color: #fcfcfc"> mpmbq2/vitrocal</a>
+        </span>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["instant", "tabs"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+      <span><a href="../ParameterTune/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
-      
-        <script src="../config.js"></script>
-      
-    
-  </body>
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../config.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
 </html>
